@@ -17,7 +17,6 @@ db.feeds.mapReduce(
 					longitude = resolutions.longitude;
 				}
 				cities.push({ name: this.semantic[x].name, latitude: latitude, longitude: longitude });
-				//emit(key, { semantic: this.semantic[x], utime: this.utime });
 			}
 		}
 		for(var x = 0; x < people.length; x++) {
@@ -26,8 +25,8 @@ db.feeds.mapReduce(
 	},
 	function(key, values) {
 		var docs = []
-		for (emit in values) {
-			var tmp = values[emit].docs;
+		for (emit1 in values) {
+			var tmp = values[emit1].docs;
 			for (docid in tmp) {
 				docs.push(tmp[docid])
 			 }
@@ -35,13 +34,6 @@ db.feeds.mapReduce(
 		return {
 			docs : docs
 		}
-
-		return { cities: values };
-		return {
-			_id : key,
-			docs : values
-		}
-		// return values[0];
 	},
 	{
 		query: { "semantic._type": "Person", "semantic._type": "City"  },
