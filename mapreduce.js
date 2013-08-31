@@ -9,7 +9,14 @@ db.feeds.mapReduce(
 		}
 		for(var x = 0; x < this.semantic.length; x++) {
 			if (this.semantic[x]._type == "City") {
-				cities.push(this.semantic[x].name);
+				var latitude = null;
+				var longitude = null;
+				if (this.semantic[x].resolutions) {
+					var resolutions = this.semantic[x].resolutions.pop();
+					latitude = resolutions.latitude;
+					longitude = resolutions.longitude;
+				}
+				cities.push({ name: this.semantic[x].name, latitude: latitude, longitude: longitude });
 				//emit(key, { semantic: this.semantic[x], utime: this.utime });
 			}
 		}
