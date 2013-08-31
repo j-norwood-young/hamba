@@ -14,14 +14,33 @@ db.feeds.mapReduce(
 			}
 		}
 		for(var x = 0; x < people.length; x++) {
-			emit(people[x], { cities: cities, utime: this.utime });
+			emit(people[x], { docs : [{time : this.utime, cities : cities}] } );
 		}
 	},
 	function(key, values) {
-		
+		var docs = []
+		for (emit in values) {
+			var tmp = values[emit].docs;
+			for (docid in tmp) {
+				docs.push(tmp[docid])
+			 }
+		}
+		return {
+			docs : docs
+		}
+
+		return { cities: values };
+		return {
+			_id : key,
+			docs : values
+		}
+		// return values[0];
 	},
 	{
 		query: { "semantic._type": "Person", "semantic._type": "City"  },
-		out: "reduce_test"
+		out: "reduce_test",
+		finalize: function(key, reducedVal) {
+			return reducedVal;
+		}
 	}
 )
