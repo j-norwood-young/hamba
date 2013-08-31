@@ -1,0 +1,5 @@
+connected to: 127.0.0.1
+Thu Aug 22 06:32:40.033 DATABASE: feeder	 to 	dump/feeder
+Thu Aug 22 06:32:40.060 	feeder.reduce_test to dump/feeder/reduce_test.bson
+Thu Aug 22 06:32:40.521 		 5574 objects
+Thu Aug 22 06:32:40.591 	Metadata for feeder.reduce_test to dump/feeder/reduce_test.metadata.json
