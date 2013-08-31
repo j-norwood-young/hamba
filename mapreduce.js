@@ -9,11 +9,11 @@ db.feeds.mapReduce(
 		}
 		for(var x = 0; x < this.semantic.length; x++) {
 			if (this.semantic[x]._type == "City") {
-				cities.push(this.semantic[x]);
+				cities.push(this.semantic[x].name);
 				//emit(key, { semantic: this.semantic[x], utime: this.utime });
 			}
 		}
-		for(var x = 0; x < people; x++) {
+		for(var x = 0; x < people.length; x++) {
 			emit(people[x], { cities: cities, utime: this.utime });
 		}
 	},
@@ -21,7 +21,7 @@ db.feeds.mapReduce(
 		
 	},
 	{
-		query: { utime: { $gt: 1377271222 }, "semantic._type": "Person", "semantic._type": "City"  },
+		query: { "semantic._type": "Person", "semantic._type": "City"  },
 		out: "reduce_test"
 	}
 )
