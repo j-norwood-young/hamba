@@ -8,7 +8,7 @@ db.feeds.mapReduce(
 		}
 		for(var x = 0; x < this.semantic.length; x++) {
 			if (this.semantic[x]._type == "City") {
-				emit(key, this.semantic[x]);
+				emit(key, { semantic: this.semantic[x], utime: this.utime });
 			}
 		}
 	},
