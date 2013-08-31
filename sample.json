@@ -1,0 +1,7 @@
+{ 
+"Jacob Zuma": 
+	[
+		{ "Buenos Aires": { dates: [ 1234567 ], latitude: -12.123, longitude: 32.223 } },
+		{ "Johannesburg": { dates: [ 1234567, 8901234, 567890 ], latitude: -12.123, longitude: 32.223 } }
+	]
+}
