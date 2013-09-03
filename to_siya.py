@@ -9,7 +9,10 @@ headers = ["entity", "date", "lat", "long"]
 
 writer.writerow(headers)
 
+count = 0
 for line in sys.stdin:
+    count += 1
+    sys.stdout.write("\r%d" % count) 
     js = json.loads(line)
     if js["_id"] == search_entity:
         for doc in js["value"]["docs"]:
