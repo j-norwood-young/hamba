@@ -1,3 +1,6 @@
+# Usage:
+# cat samples/bigger_sample.json | python to_siya.py  "Jacob Zuma" > samples/zuma.csv
+
 import json
 import csv
 import sys
